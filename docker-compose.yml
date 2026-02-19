@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: ./services/app
+    ports:
+      - "8001:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
