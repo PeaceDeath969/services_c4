@@ -1,0 +1,49 @@
+specification {
+  element actor { style { shape person } }
+  element system
+  element container
+  element externalSystem
+  relationship sync
+  relationship async
+}
+
+model {
+  buyer  = actor "Покупатель"
+  seller = actor "Продавец"
+  mp = system "Маркетплейс" {
+    ui  = container "Сайт и приложение"
+    api = container "Шлюз API"
+    users    = container "Пользователи"
+    catalog  = container "Каталог"
+    feed     = container "Лента"
+    orders   = container "Заказы"
+    payments = container "Платежи"
+    notify   = container "Уведомления"
+    broker = container "Брокер событий"
+    buyer  .sync ui
+    seller .sync ui
+    ui .sync api
+    api .sync users
+    api .sync catalog
+    api .sync feed
+    api .sync orders
+    api .sync payments
+    orders   -[async]-> broker
+    payments -[async]-> broker
+    catalog  -[async]-> broker
+    broker -[async]-> notify
+    broker -[async]-> feed
+    broker -[async]-> orders
+  }
+  payProvider = externalSystem "Платежный провайдер"
+  msgProvider = externalSystem "Провайдер сообщений"
+  mp.payments .sync payProvider
+  mp.notify   .sync msgProvider
+}
+
+views {
+  container mp {
+    include *
+    autoLayout
+  }
+}

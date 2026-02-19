@@ -1,100 +1,101 @@
 {
   "configuration" : { },
-  "description" : "C4 контейнеры",
+  "description" : "C4 containers",
   "documentation" : { },
   "id" : 1,
   "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2026-02-19T20:51:11Z",
+  "lastModifiedDate" : "2026-02-19T20:57:38Z",
   "model" : {
     "people" : [ {
-      "description" : "Смотрит ленту заказывает оплачивает",
+      "description" : "Browses feed and buys",
       "id" : "1",
-      "name" : "Покупатель",
+      "name" : "Buyer",
       "properties" : {
         "structurizr.dsl.identifier" : "buyer"
       },
       "relationships" : [ {
         "description" : "sync",
-        "destinationId" : "3",
+        "destinationId" : "4",
         "id" : "21",
         "sourceId" : "1",
         "tags" : "Relationship"
+      }, {
+        "description" : "sync",
+        "destinationId" : "3",
+        "id" : "22",
+        "linkedRelationshipId" : "21",
+        "sourceId" : "1"
       } ],
       "tags" : "Element,Person"
     }, {
-      "description" : "Добавляет товары следит за заказами",
+      "description" : "Manages catalog",
       "id" : "2",
-      "name" : "Продавец",
+      "name" : "Seller",
       "properties" : {
         "structurizr.dsl.identifier" : "seller"
       },
       "relationships" : [ {
         "description" : "sync",
-        "destinationId" : "3",
-        "id" : "22",
+        "destinationId" : "4",
+        "id" : "23",
         "sourceId" : "2",
         "tags" : "Relationship"
+      }, {
+        "description" : "sync",
+        "destinationId" : "3",
+        "id" : "24",
+        "linkedRelationshipId" : "23",
+        "sourceId" : "2"
       } ],
       "tags" : "Element,Person"
     } ],
     "softwareSystems" : [ {
-      "description" : "Интерфейс покупателя и продавца",
-      "documentation" : { },
-      "id" : "3",
-      "name" : "Сайт и приложение",
-      "properties" : {
-        "structurizr.dsl.identifier" : "ui"
-      },
-      "relationships" : [ {
-        "description" : "sync",
-        "destinationId" : "5",
-        "id" : "23",
-        "sourceId" : "3",
-        "tags" : "Relationship"
-      }, {
-        "description" : "sync",
-        "destinationId" : "4",
-        "id" : "24",
-        "linkedRelationshipId" : "23",
-        "sourceId" : "3"
-      } ],
-      "tags" : "Element,Software System"
-    }, {
       "containers" : [ {
-        "description" : "Один вход для UI",
+        "description" : "UI",
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Web/Mobile App",
+        "properties" : {
+          "structurizr.dsl.identifier" : "web"
+        },
+        "relationships" : [ {
+          "description" : "sync",
+          "destinationId" : "5",
+          "id" : "25",
+          "sourceId" : "4",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Web"
+      }, {
+        "description" : "Entry point",
         "documentation" : { },
         "id" : "5",
-        "name" : "Шлюз API",
+        "name" : "API",
         "properties" : {
           "structurizr.dsl.identifier" : "api"
         },
         "relationships" : [ {
           "description" : "sync",
           "destinationId" : "6",
-          "id" : "25",
-          "sourceId" : "5",
-          "tags" : "Relationship"
-        }, {
-          "description" : "sync",
-          "destinationId" : "7",
           "id" : "26",
           "sourceId" : "5",
           "tags" : "Relationship"
         }, {
           "description" : "sync",
-          "destinationId" : "8",
+          "destinationId" : "7",
           "id" : "27",
           "sourceId" : "5",
           "tags" : "Relationship"
         }, {
           "description" : "sync",
-          "destinationId" : "9",
+          "destinationId" : "8",
           "id" : "28",
           "sourceId" : "5",
           "tags" : "Relationship"
         }, {
           "description" : "sync",
-          "destinationId" : "10",
+          "destinationId" : "9",
           "id" : "29",
           "sourceId" : "5",
           "tags" : "Relationship"
@@ -102,10 +103,10 @@
         "tags" : "Element,Container",
         "technology" : "HTTP"
       }, {
-        "description" : "Аккаунты роли",
+        "description" : "Users and roles",
         "documentation" : { },
         "id" : "6",
-        "name" : "Пользователи",
+        "name" : "User Service",
         "properties" : {
           "structurizr.dsl.identifier" : "users"
         },
@@ -119,10 +120,10 @@
         "tags" : "Element,Container",
         "technology" : "Service"
       }, {
-        "description" : "Товары категории атрибуты",
+        "description" : "Products",
         "documentation" : { },
         "id" : "7",
-        "name" : "Каталог",
+        "name" : "Catalog Service",
         "properties" : {
           "structurizr.dsl.identifier" : "catalog"
         },
@@ -132,20 +133,14 @@
           "id" : "31",
           "sourceId" : "7",
           "tags" : "Relationship"
-        }, {
-          "description" : "async",
-          "destinationId" : "12",
-          "id" : "38",
-          "sourceId" : "7",
-          "tags" : "Relationship"
         } ],
         "tags" : "Element,Container",
         "technology" : "Service"
       }, {
-        "description" : "Выдача и ранжирование",
+        "description" : "Feed and personalization",
         "documentation" : { },
         "id" : "8",
-        "name" : "Лента",
+        "name" : "Feed Service",
         "properties" : {
           "structurizr.dsl.identifier" : "feed"
         },
@@ -159,10 +154,10 @@
         "tags" : "Element,Container",
         "technology" : "Service"
       }, {
-        "description" : "Создание и статусы",
+        "description" : "Orders and statuses",
         "documentation" : { },
         "id" : "9",
-        "name" : "Заказы",
+        "name" : "Order Service",
         "properties" : {
           "structurizr.dsl.identifier" : "orders"
         },
@@ -182,10 +177,10 @@
         "tags" : "Element,Container",
         "technology" : "Service"
       }, {
-        "description" : "Факт оплаты и учет",
+        "description" : "Payments and accounting",
         "documentation" : { },
         "id" : "10",
-        "name" : "Платежи",
+        "name" : "Payment Service",
         "properties" : {
           "structurizr.dsl.identifier" : "payments"
         },
@@ -196,27 +191,21 @@
           "sourceId" : "10",
           "tags" : "Relationship"
         }, {
-          "description" : "async",
-          "destinationId" : "12",
-          "id" : "37",
-          "sourceId" : "10",
-          "tags" : "Relationship"
-        }, {
           "description" : "sync",
           "destinationId" : "19",
-          "id" : "42",
+          "id" : "39",
           "sourceId" : "10",
           "tags" : "Relationship"
         } ],
         "tags" : "Element,Container",
         "technology" : "Service"
       }, {
-        "description" : "Отправка и лог",
+        "description" : "Email/SMS/push",
         "documentation" : { },
         "id" : "11",
-        "name" : "Уведомления",
+        "name" : "Notification Service",
         "properties" : {
-          "structurizr.dsl.identifier" : "notify"
+          "structurizr.dsl.identifier" : "notifications"
         },
         "relationships" : [ {
           "description" : "sync",
@@ -227,43 +216,37 @@
         }, {
           "description" : "sync",
           "destinationId" : "20",
-          "id" : "44",
+          "id" : "41",
           "sourceId" : "11",
           "tags" : "Relationship"
         } ],
         "tags" : "Element,Container",
         "technology" : "Service"
       }, {
-        "description" : "События между сервисами",
+        "description" : "Async events",
         "documentation" : { },
         "id" : "12",
-        "name" : "Брокер событий",
+        "name" : "Message Broker",
         "properties" : {
           "structurizr.dsl.identifier" : "broker"
         },
         "relationships" : [ {
           "description" : "async",
+          "destinationId" : "10",
+          "id" : "37",
+          "sourceId" : "12",
+          "tags" : "Relationship"
+        }, {
+          "description" : "async",
           "destinationId" : "11",
-          "id" : "39",
-          "sourceId" : "12",
-          "tags" : "Relationship"
-        }, {
-          "description" : "async",
-          "destinationId" : "8",
-          "id" : "40",
-          "sourceId" : "12",
-          "tags" : "Relationship"
-        }, {
-          "description" : "async",
-          "destinationId" : "9",
-          "id" : "41",
+          "id" : "38",
           "sourceId" : "12",
           "tags" : "Relationship"
         } ],
         "tags" : "Element,Container",
-        "technology" : "Kafka или RabbitMQ"
+        "technology" : "Kafka/RabbitMQ"
       }, {
-        "description" : "Данные пользователей",
+        "description" : "Users data",
         "documentation" : { },
         "id" : "13",
         "name" : "Users DB",
@@ -273,7 +256,7 @@
         "tags" : "Element,Container,Database",
         "technology" : "PostgreSQL"
       }, {
-        "description" : "Данные каталога",
+        "description" : "Catalog data",
         "documentation" : { },
         "id" : "14",
         "name" : "Catalog DB",
@@ -283,7 +266,7 @@
         "tags" : "Element,Container,Database",
         "technology" : "PostgreSQL"
       }, {
-        "description" : "Read модель ленты",
+        "description" : "Feed read model",
         "documentation" : { },
         "id" : "15",
         "name" : "Feed DB",
@@ -291,9 +274,9 @@
           "structurizr.dsl.identifier" : "feedDb"
         },
         "tags" : "Element,Container,Database",
-        "technology" : "Redis или PostgreSQL"
+        "technology" : "Redis/PostgreSQL"
       }, {
-        "description" : "Данные заказов",
+        "description" : "Orders data",
         "documentation" : { },
         "id" : "16",
         "name" : "Orders DB",
@@ -303,74 +286,74 @@
         "tags" : "Element,Container,Database",
         "technology" : "PostgreSQL"
       }, {
-        "description" : "Данные платежей",
+        "description" : "Payments data",
         "documentation" : { },
         "id" : "17",
         "name" : "Payments DB",
         "properties" : {
-          "structurizr.dsl.identifier" : "payDb"
+          "structurizr.dsl.identifier" : "paymentsDb"
         },
         "tags" : "Element,Container,Database",
         "technology" : "PostgreSQL"
       }, {
-        "description" : "История доставок",
+        "description" : "Delivery log",
         "documentation" : { },
         "id" : "18",
-        "name" : "Notify DB",
+        "name" : "Notifications DB",
         "properties" : {
-          "structurizr.dsl.identifier" : "notifyDb"
+          "structurizr.dsl.identifier" : "notificationsDb"
         },
         "tags" : "Element,Container,Database",
         "technology" : "PostgreSQL"
       } ],
-      "description" : "Бэкенд маркетплейса",
+      "description" : "Marketplace backend",
       "documentation" : { },
-      "id" : "4",
-      "name" : "Маркетплейс",
+      "id" : "3",
+      "name" : "Marketplace",
       "properties" : {
-        "structurizr.dsl.identifier" : "mp"
+        "structurizr.dsl.identifier" : "marketplace"
       },
       "relationships" : [ {
         "description" : "sync",
         "destinationId" : "19",
-        "id" : "43",
-        "linkedRelationshipId" : "42",
-        "sourceId" : "4"
+        "id" : "40",
+        "linkedRelationshipId" : "39",
+        "sourceId" : "3"
       }, {
         "description" : "sync",
         "destinationId" : "20",
-        "id" : "45",
-        "linkedRelationshipId" : "44",
-        "sourceId" : "4"
+        "id" : "42",
+        "linkedRelationshipId" : "41",
+        "sourceId" : "3"
       } ],
       "tags" : "Element,Software System"
     }, {
-      "description" : "Внешняя оплата",
+      "description" : "External payments",
       "documentation" : { },
       "id" : "19",
-      "name" : "Платежный провайдер",
+      "name" : "Payment Provider",
       "properties" : {
-        "structurizr.dsl.identifier" : "payProvider"
+        "structurizr.dsl.identifier" : "psp"
       },
       "tags" : "Element,Software System"
     }, {
-      "description" : "Email SMS push",
+      "description" : "External messaging",
       "documentation" : { },
       "id" : "20",
-      "name" : "Провайдер сообщений",
+      "name" : "Notification Provider",
       "properties" : {
-        "structurizr.dsl.identifier" : "msgProvider"
+        "structurizr.dsl.identifier" : "msg"
       },
       "tags" : "Element,Software System"
     } ]
   },
-  "name" : "Маркетплейс",
+  "name" : "Marketplace",
   "properties" : {
     "structurizr.inspection.info" : "0",
     "structurizr.inspection.ignore" : "0",
-    "structurizr.inspection.error" : "29",
+    "structurizr.inspection.error" : "26",
     "structurizr.inspection.warning" : "0",
-    "structurizr.dsl" : "d29ya3NwYWNlICLQnNCw0YDQutC10YLQv9C70LXQudGBIiAiQzQg0LrQvtC90YLQtdC50L3QtdGA0YsiIHsKCiAgbW9kZWwgewogICAgYnV5ZXIgID0gcGVyc29uICLQn9C+0LrRg9C/0LDRgtC10LvRjCIgItCh0LzQvtGC0YDQuNGCINC70LXQvdGC0YMg0LfQsNC60LDQt9GL0LLQsNC10YIg0L7Qv9C70LDRh9C40LLQsNC10YIiCiAgICBzZWxsZXIgPSBwZXJzb24gItCf0YDQvtC00LDQstC10YYiICAgItCU0L7QsdCw0LLQu9GP0LXRgiDRgtC+0LLQsNGA0Ysg0YHQu9C10LTQuNGCINC30LAg0LfQsNC60LDQt9Cw0LzQuCIKCiAgICB1aSA9IHNvZnR3YXJlU3lzdGVtICLQodCw0LnRgiDQuCDQv9GA0LjQu9C+0LbQtdC90LjQtSIgItCY0L3RgtC10YDRhNC10LnRgSDQv9C+0LrRg9C/0LDRgtC10LvRjyDQuCDQv9GA0L7QtNCw0LLRhtCwIgoKICAgIG1wID0gc29mdHdhcmVTeXN0ZW0gItCc0LDRgNC60LXRgtC/0LvQtdC50YEiICLQkdGN0LrQtdC90LQg0LzQsNGA0LrQtdGC0L/Qu9C10LnRgdCwIiB7CiAgICAgIGFwaSA9IGNvbnRhaW5lciAi0KjQu9GO0LcgQVBJIiAi0J7QtNC40L0g0LLRhdC+0LQg0LTQu9GPIFVJIiAiSFRUUCIKCiAgICAgIHVzZXJzICAgID0gY29udGFpbmVyICLQn9C+0LvRjNC30L7QstCw0YLQtdC70LgiICLQkNC60LrQsNGD0L3RgtGLINGA0L7Qu9C4IiAiU2VydmljZSIKICAgICAgY2F0YWxvZyAgPSBjb250YWluZXIgItCa0LDRgtCw0LvQvtCzIiAi0KLQvtCy0LDRgNGLINC60LDRgtC10LPQvtGA0LjQuCDQsNGC0YDQuNCx0YPRgtGLIiAiU2VydmljZSIKICAgICAgZmVlZCAgICAgPSBjb250YWluZXIgItCb0LXQvdGC0LAiICLQktGL0LTQsNGH0LAg0Lgg0YDQsNC90LbQuNGA0L7QstCw0L3QuNC1IiAiU2VydmljZSIKICAgICAgb3JkZXJzICAgPSBjb250YWluZXIgItCX0LDQutCw0LfRiyIgItCh0L7Qt9C00LDQvdC40LUg0Lgg0YHRgtCw0YLRg9GB0YsiICJTZXJ2aWNlIgogICAgICBwYXltZW50cyA9IGNvbnRhaW5lciAi0J/Qu9Cw0YLQtdC20LgiICLQpNCw0LrRgiDQvtC/0LvQsNGC0Ysg0Lgg0YPRh9C10YIiICJTZXJ2aWNlIgogICAgICBub3RpZnkgICA9IGNvbnRhaW5lciAi0KPQstC10LTQvtC80LvQtdC90LjRjyIgItCe0YLQv9GA0LDQstC60LAg0Lgg0LvQvtCzIiAiU2VydmljZSIKCiAgICAgIGJyb2tlciA9IGNvbnRhaW5lciAi0JHRgNC+0LrQtdGAINGB0L7QsdGL0YLQuNC5IiAi0KHQvtCx0YvRgtC40Y8g0LzQtdC20LTRgyDRgdC10YDQstC40YHQsNC80LgiICJLYWZrYSDQuNC70LggUmFiYml0TVEiCgogICAgICB1c2Vyc0RiICAgPSBjb250YWluZXIgIlVzZXJzIERCIiAi0JTQsNC90L3Ri9C1INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvQtdC5IiAiUG9zdGdyZVNRTCIgIkRhdGFiYXNlIgogICAgICBjYXRhbG9nRGIgPSBjb250YWluZXIgIkNhdGFsb2cgREIiICLQlNCw0L3QvdGL0LUg0LrQsNGC0LDQu9C+0LPQsCIgIlBvc3RncmVTUUwiICJEYXRhYmFzZSIKICAgICAgZmVlZERiICAgID0gY29udGFpbmVyICJGZWVkIERCIiAiUmVhZCDQvNC+0LTQtdC70Ywg0LvQtdC90YLRiyIgIlJlZGlzINC40LvQuCBQb3N0Z3JlU1FMIiAiRGF0YWJhc2UiCiAgICAgIG9yZGVyc0RiICA9IGNvbnRhaW5lciAiT3JkZXJzIERCIiAi0JTQsNC90L3Ri9C1INC30LDQutCw0LfQvtCyIiAiUG9zdGdyZVNRTCIgIkRhdGFiYXNlIgogICAgICBwYXlEYiAgICAgPSBjb250YWluZXIgIlBheW1lbnRzIERCIiAi0JTQsNC90L3Ri9C1INC/0LvQsNGC0LXQttC10LkiICJQb3N0Z3JlU1FMIiAiRGF0YWJhc2UiCiAgICAgIG5vdGlmeURiICA9IGNvbnRhaW5lciAiTm90aWZ5IERCIiAi0JjRgdGC0L7RgNC40Y8g0LTQvtGB0YLQsNCy0L7QuiIgIlBvc3RncmVTUUwiICJEYXRhYmFzZSIKICAgIH0KCiAgICBwYXlQcm92aWRlciA9IHNvZnR3YXJlU3lzdGVtICLQn9C70LDRgtC10LbQvdGL0Lkg0L/RgNC+0LLQsNC50LTQtdGAIiAi0JLQvdC10YjQvdGP0Y8g0L7Qv9C70LDRgtCwIgogICAgbXNnUHJvdmlkZXIgPSBzb2Z0d2FyZVN5c3RlbSAi0J/RgNC+0LLQsNC50LTQtdGAINGB0L7QvtCx0YnQtdC90LjQuSIgIkVtYWlsIFNNUyBwdXNoIgoKICAgIGJ1eWVyICAtPiB1aSAic3luYyIKICAgIHNlbGxlciAtPiB1aSAic3luYyIKCiAgICB1aSAtPiBhcGkgInN5bmMiCgogICAgYXBpIC0+IHVzZXJzICAgICJzeW5jIgogICAgYXBpIC0+IGNhdGFsb2cgICJzeW5jIgogICAgYXBpIC0+IGZlZWQgICAgICJzeW5jIgogICAgYXBpIC0+IG9yZGVycyAgICJzeW5jIgogICAgYXBpIC0+IHBheW1lbnRzICJzeW5jIgoKICAgIHVzZXJzICAgIC0+IHVzZXJzRGIgICAic3luYyIKICAgIGNhdGFsb2cgIC0+IGNhdGFsb2dEYiAic3luYyIKICAgIGZlZWQgICAgIC0+IGZlZWREYiAgICAic3luYyIKICAgIG9yZGVycyAgIC0+IG9yZGVyc0RiICAic3luYyIKICAgIHBheW1lbnRzIC0+IHBheURiICAgICAic3luYyIKICAgIG5vdGlmeSAgIC0+IG5vdGlmeURiICAic3luYyIKCiAgICBvcmRlcnMgICAtPiBicm9rZXIgImFzeW5jIgogICAgcGF5bWVudHMgLT4gYnJva2VyICJhc3luYyIKICAgIGNhdGFsb2cgIC0+IGJyb2tlciAiYXN5bmMiCgogICAgYnJva2VyIC0+IG5vdGlmeSAiYXN5bmMiCiAgICBicm9rZXIgLT4gZmVlZCAgICJhc3luYyIKICAgIGJyb2tlciAtPiBvcmRlcnMgImFzeW5jIgoKICAgIHBheW1lbnRzIC0+IHBheVByb3ZpZGVyICJzeW5jIgogICAgbm90aWZ5ICAgLT4gbXNnUHJvdmlkZXIgInN5bmMiCiAgfQoKICB2aWV3cyB7CiAgICBjb250YWluZXIgbXAgY29udGFpbmVycyAiY29udGFpbmVycyIgewogICAgICBpbmNsdWRlICoKICAgICAgaW5jbHVkZSBidXllcgogICAgICBpbmNsdWRlIHNlbGxlcgogICAgICBpbmNsdWRlIHVpCiAgICAgIGluY2x1ZGUgcGF5UHJvdmlkZXIKICAgICAgaW5jbHVkZSBtc2dQcm92aWRlcgogICAgICBhdXRvTGF5b3V0IGxyCiAgICB9CiAgfQp9"
+    "structurizr.dsl" : "d29ya3NwYWNlICJNYXJrZXRwbGFjZSIgIkM0IGNvbnRhaW5lcnMiIHsKCiAgbW9kZWwgewogICAgYnV5ZXIgID0gcGVyc29uICJCdXllciIgIkJyb3dzZXMgZmVlZCBhbmQgYnV5cyIKICAgIHNlbGxlciA9IHBlcnNvbiAiU2VsbGVyIiAiTWFuYWdlcyBjYXRhbG9nIgoKICAgIG1hcmtldHBsYWNlID0gc29mdHdhcmVTeXN0ZW0gIk1hcmtldHBsYWNlIiAiTWFya2V0cGxhY2UgYmFja2VuZCIgewoKICAgICAgd2ViID0gY29udGFpbmVyICJXZWIvTW9iaWxlIEFwcCIgIlVJIiAiV2ViIgogICAgICBhcGkgPSBjb250YWluZXIgIkFQSSIgIkVudHJ5IHBvaW50IiAiSFRUUCIKCiAgICAgIHVzZXJzID0gY29udGFpbmVyICJVc2VyIFNlcnZpY2UiICJVc2VycyBhbmQgcm9sZXMiICJTZXJ2aWNlIgogICAgICBjYXRhbG9nID0gY29udGFpbmVyICJDYXRhbG9nIFNlcnZpY2UiICJQcm9kdWN0cyIgIlNlcnZpY2UiCiAgICAgIGZlZWQgPSBjb250YWluZXIgIkZlZWQgU2VydmljZSIgIkZlZWQgYW5kIHBlcnNvbmFsaXphdGlvbiIgIlNlcnZpY2UiCiAgICAgIG9yZGVycyA9IGNvbnRhaW5lciAiT3JkZXIgU2VydmljZSIgIk9yZGVycyBhbmQgc3RhdHVzZXMiICJTZXJ2aWNlIgogICAgICBwYXltZW50cyA9IGNvbnRhaW5lciAiUGF5bWVudCBTZXJ2aWNlIiAiUGF5bWVudHMgYW5kIGFjY291bnRpbmciICJTZXJ2aWNlIgogICAgICBub3RpZmljYXRpb25zID0gY29udGFpbmVyICJOb3RpZmljYXRpb24gU2VydmljZSIgIkVtYWlsL1NNUy9wdXNoIiAiU2VydmljZSIKCiAgICAgIGJyb2tlciA9IGNvbnRhaW5lciAiTWVzc2FnZSBCcm9rZXIiICJBc3luYyBldmVudHMiICJLYWZrYS9SYWJiaXRNUSIKCiAgICAgIHVzZXJzRGIgPSBjb250YWluZXIgIlVzZXJzIERCIiAiVXNlcnMgZGF0YSIgIlBvc3RncmVTUUwiICJEYXRhYmFzZSIKICAgICAgY2F0YWxvZ0RiID0gY29udGFpbmVyICJDYXRhbG9nIERCIiAiQ2F0YWxvZyBkYXRhIiAiUG9zdGdyZVNRTCIgIkRhdGFiYXNlIgogICAgICBmZWVkRGIgPSBjb250YWluZXIgIkZlZWQgREIiICJGZWVkIHJlYWQgbW9kZWwiICJSZWRpcy9Qb3N0Z3JlU1FMIiAiRGF0YWJhc2UiCiAgICAgIG9yZGVyc0RiID0gY29udGFpbmVyICJPcmRlcnMgREIiICJPcmRlcnMgZGF0YSIgIlBvc3RncmVTUUwiICJEYXRhYmFzZSIKICAgICAgcGF5bWVudHNEYiA9IGNvbnRhaW5lciAiUGF5bWVudHMgREIiICJQYXltZW50cyBkYXRhIiAiUG9zdGdyZVNRTCIgIkRhdGFiYXNlIgogICAgICBub3RpZmljYXRpb25zRGIgPSBjb250YWluZXIgIk5vdGlmaWNhdGlvbnMgREIiICJEZWxpdmVyeSBsb2ciICJQb3N0Z3JlU1FMIiAiRGF0YWJhc2UiCiAgICB9CgogICAgcHNwID0gc29mdHdhcmVTeXN0ZW0gIlBheW1lbnQgUHJvdmlkZXIiICJFeHRlcm5hbCBwYXltZW50cyIKICAgIG1zZyA9IHNvZnR3YXJlU3lzdGVtICJOb3RpZmljYXRpb24gUHJvdmlkZXIiICJFeHRlcm5hbCBtZXNzYWdpbmciCgogICAgYnV5ZXIgIC0+IHdlYiAic3luYyIKICAgIHNlbGxlciAtPiB3ZWIgInN5bmMiCgogICAgd2ViIC0+IGFwaSAic3luYyIKCiAgICBhcGkgLT4gdXNlcnMgInN5bmMiCiAgICBhcGkgLT4gY2F0YWxvZyAic3luYyIKICAgIGFwaSAtPiBmZWVkICJzeW5jIgogICAgYXBpIC0+IG9yZGVycyAic3luYyIKCiAgICB1c2VycyAtPiB1c2Vyc0RiICJzeW5jIgogICAgY2F0YWxvZyAtPiBjYXRhbG9nRGIgInN5bmMiCiAgICBmZWVkIC0+IGZlZWREYiAic3luYyIKICAgIG9yZGVycyAtPiBvcmRlcnNEYiAic3luYyIKICAgIHBheW1lbnRzIC0+IHBheW1lbnRzRGIgInN5bmMiCiAgICBub3RpZmljYXRpb25zIC0+IG5vdGlmaWNhdGlvbnNEYiAic3luYyIKCiAgICBvcmRlcnMgLT4gYnJva2VyICJhc3luYyIKICAgIGJyb2tlciAtPiBwYXltZW50cyAiYXN5bmMiCiAgICBicm9rZXIgLT4gbm90aWZpY2F0aW9ucyAiYXN5bmMiCgogICAgcGF5bWVudHMgLT4gcHNwICJzeW5jIgogICAgbm90aWZpY2F0aW9ucyAtPiBtc2cgInN5bmMiCiAgfQoKICB2aWV3cyB7CiAgICBjb250YWluZXIgbWFya2V0cGxhY2UgY29udGFpbmVycyAiY29udGFpbmVycyIgewogICAgICBpbmNsdWRlICoKICAgICAgaW5jbHVkZSBidXllcgogICAgICBpbmNsdWRlIHNlbGxlcgogICAgICBpbmNsdWRlIHBzcAogICAgICBpbmNsdWRlIG1zZwogICAgICBhdXRvTGF5b3V0CiAgICB9CiAgfQp9"
   },
   "views" : {
     "configuration" : {
@@ -386,100 +369,98 @@
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
-        "rankDirection" : "LeftRight",
+        "rankDirection" : "TopBottom",
         "rankSeparation" : 300,
         "vertices" : false
       },
       "description" : "containers",
       "dimensions" : {
-        "height" : 3498,
-        "width" : 5370
+        "height" : 4399,
+        "width" : 5324
       },
       "elements" : [ {
         "id" : "1",
-        "x" : 200,
-        "y" : 241
+        "x" : 970,
+        "y" : 142
       }, {
         "id" : "2",
-        "x" : 200,
-        "y" : 841
+        "x" : 1720,
+        "y" : 142
       }, {
-        "id" : "3",
-        "x" : 950,
-        "y" : 541
+        "id" : "4",
+        "x" : 1345,
+        "y" : 742
       }, {
         "id" : "5",
-        "x" : 1700,
-        "y" : 541
+        "x" : 1345,
+        "y" : 1342
       }, {
         "id" : "6",
-        "x" : 2450,
-        "y" : 541
+        "x" : 220,
+        "y" : 1942
       }, {
         "id" : "7",
-        "x" : 2450,
-        "y" : 1141
+        "x" : 970,
+        "y" : 1942
       }, {
         "id" : "8",
-        "x" : 3950,
-        "y" : 1696
+        "x" : 1720,
+        "y" : 1942
       }, {
         "id" : "9",
-        "x" : 3950,
-        "y" : 1096
+        "x" : 2470,
+        "y" : 1942
       }, {
         "id" : "10",
-        "x" : 2450,
-        "y" : 2041
+        "x" : 2445,
+        "y" : 3142
       }, {
         "id" : "11",
-        "x" : 3950,
-        "y" : 2296
+        "x" : 3195,
+        "y" : 3142
       }, {
         "id" : "12",
-        "x" : 3200,
-        "y" : 1741
+        "x" : 2470,
+        "y" : 2542
       }, {
         "id" : "13",
-        "x" : 3200,
-        "y" : 541
+        "x" : 220,
+        "y" : 2542
       }, {
         "id" : "14",
-        "x" : 3200,
-        "y" : 1141
+        "x" : 970,
+        "y" : 2542
       }, {
         "id" : "15",
-        "x" : 4700,
-        "y" : 1696
+        "x" : 1720,
+        "y" : 2542
       }, {
         "id" : "16",
-        "x" : 4700,
-        "y" : 1096
+        "x" : 3220,
+        "y" : 2542
       }, {
         "id" : "17",
-        "x" : 3200,
-        "y" : 2341
+        "x" : 2424,
+        "y" : 3742
       }, {
         "id" : "18",
-        "x" : 4700,
-        "y" : 2296
+        "x" : 3174,
+        "y" : 3742
       }, {
         "id" : "19",
-        "x" : 3200,
-        "y" : 2941
+        "x" : 3924,
+        "y" : 3742
       }, {
         "id" : "20",
-        "x" : 4700,
-        "y" : 2896
+        "x" : 4674,
+        "y" : 3742
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "key" : "containers",
-      "name" : "Container View: Маркетплейс",
+      "name" : "Container View: Marketplace",
       "order" : 1,
       "relationships" : [ {
         "id" : "21"
-      }, {
-        "id" : "22"
       }, {
         "id" : "23"
       }, {
@@ -487,26 +468,9 @@
       }, {
         "id" : "26"
       }, {
-        "id" : "27",
-        "vertices" : [ {
-          "x" : 2450,
-          "y" : 391
-        }, {
-          "x" : 3650,
-          "y" : 391
-        }, {
-          "x" : 3950,
-          "y" : 1546
-        } ]
+        "id" : "27"
       }, {
-        "id" : "28",
-        "vertices" : [ {
-          "x" : 2450,
-          "y" : 158
-        }, {
-          "x" : 3650,
-          "y" : 158
-        } ]
+        "id" : "28"
       }, {
         "id" : "29"
       }, {
@@ -522,31 +486,24 @@
       }, {
         "id" : "35"
       }, {
-        "id" : "36",
-        "vertices" : [ {
-          "x" : 3702,
-          "y" : 1454
-        } ]
+        "id" : "36"
       }, {
         "id" : "37"
       }, {
         "id" : "38"
       }, {
-        "id" : "39"
-      }, {
-        "id" : "40"
-      }, {
-        "id" : "41",
+        "id" : "39",
         "vertices" : [ {
-          "x" : 3897,
-          "y" : 1682
+          "x" : 3045,
+          "y" : 3442
+        }, {
+          "x" : 3849,
+          "y" : 3742
         } ]
       }, {
-        "id" : "42"
-      }, {
-        "id" : "44"
+        "id" : "41"
       } ],
-      "softwareSystemId" : "4"
+      "softwareSystemId" : "3"
     } ]
   }
 }
