@@ -1,4 +1,4 @@
-# Marketplace Architecture (C4 + Docker)
+# Marketplace Architecture
 
 ## Описание
 
