@@ -2,7 +2,9 @@ specification {
   element actor { style { shape person } }
   element system
   element container
+  element database { style { shape cylinder } }
   element externalSystem
+
   relationship sync
   relationship async
 }
@@ -20,6 +22,12 @@ model {
     payments = container "Платежи"
     notify   = container "Уведомления"
     broker = container "Брокер событий"
+    usersDb   = database "Users DB"
+    catalogDb = database "Catalog DB"
+    feedDb    = database "Feed DB"
+    ordersDb  = database "Orders DB"
+    payDb     = database "Payments DB"
+    notifyDb  = database "Notify DB"
     buyer  .sync ui
     seller .sync ui
     ui .sync api
@@ -28,6 +36,12 @@ model {
     api .sync feed
     api .sync orders
     api .sync payments
+    users    .sync usersDb
+    catalog  .sync catalogDb
+    feed     .sync feedDb
+    orders   .sync ordersDb
+    payments .sync payDb
+    notify   .sync notifyDb
     orders   -[async]-> broker
     payments -[async]-> broker
     catalog  -[async]-> broker
@@ -42,8 +56,27 @@ model {
 }
 
 views {
-  container mp {
-    include *
+  view containers of mp {
+    title "Marketplace containers"
+    include buyer
+    include seller
+    include mp.ui
+    include mp.api
+    include mp.users
+    include mp.catalog
+    include mp.feed
+    include mp.orders
+    include mp.payments
+    include mp.notify
+    include mp.broker
+    include mp.usersDb
+    include mp.catalogDb
+    include mp.feedDb
+    include mp.ordersDb
+    include mp.payDb
+    include mp.notifyDb
+    include payProvider
+    include msgProvider
     autoLayout
   }
 }
